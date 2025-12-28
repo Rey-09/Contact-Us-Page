@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+
+<style>
+/* ===== BACKGROUND ===== */
+body {
+  background: linear-gradient(135deg, #312e81, #020617);
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ===== FLOATING HEARTS ===== */
+section::after {
+  content: "💖 ✨ 💕 ✨ 💖";
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.6rem;
+  animation: floatHearts 6s ease-in-out infinite;
+  opacity: 0.8;
+}
+
+/* ===== GLOW BACKGROUND ===== */
+section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  max-width: 520px;
+  margin: auto;
+  background:
+    radial-gradient(circle at top, rgba(244,114,182,0.45), transparent 60%),
+    radial-gradient(circle at bottom, rgba(56,189,248,0.35), transparent 60%);
+  filter: blur(90px);
+  z-index: -1;
+}
+
+/* ===== FORM CARD ===== */
+#contactForm {
+  position: relative;
+  background: rgba(255,255,255,0.1);
+  border-radius: 30px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  animation: floatUp 1s ease;
+}
+
+/* glowing border */
+#contactForm::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 32px;
+  background: linear-gradient(135deg, #f472b6, #22d3ee, #a78bfa);
+  z-index: -1;
+  filter: blur(8px);
+  opacity: 0.9;
+}
+
+/* ===== LABEL ===== */
+#contactForm label {
+  color: #fbcfe8;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+}
+
+/* ===== INPUT & TEXTAREA ===== */
+#contactForm input,
+#contactForm textarea {
+  background: rgba(30, 41, 59, 0.85);
+  border-radius: 18px;
+  border: 2px solid transparent;
+  transition: all 0.35s ease;
+}
+
+#contactForm input:focus,
+#contactForm textarea:focus {
+  border-color: #f9a8d4;
+  box-shadow:
+    0 0 0 4px rgba(249,168,212,0.35),
+    0 0 25px rgba(244,114,182,0.45);
+  transform: scale(1.02);
+}
+
+/* ===== BUTTON ===== */
+#contactForm button {
+  background: linear-gradient(135deg, #fb7185, #f472b6, #c084fc);
+  border-radius: 999px;
+  box-shadow: 0 15px 35px rgba(244,114,182,0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+#contactForm button::after {
+  content: "✨";
+  position: absolute;
+  right: 20px;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+#contactForm button:hover::after {
+  opacity: 1;
+  right: 14px;
+}
+
+#contactForm button:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 22px 50px rgba(244,114,182,0.75);
+}
+
+/* ===== FEEDBACK ===== */
+#formMessage {
+  font-size: 0.95rem;
+  animation: pop 0.4s ease;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes floatUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pop {
+  0% { transform: scale(0.7); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes floatHearts {
+  0%,100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(15px);
+  }
+}
+
+
+/* ===== FONT CUTE ===== */
+body, input, textarea, button, label {
+  font-family: 'Fredoka One', 'Comic Neue', 'Poppins', sans-serif;
+}
+
+/*label lebih playful */
+#contactForm label {
+  color: #fbcfe8;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  font-size: 0.95rem;
+}
+
+/* Button font playful */
+#contactForm button {
+  font-family: 'Fredoka One', cursive;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+</style>
+
+
+<body class="bg-slate-950 text-white">
+
+  <!-- ================= CONTACT ================= -->
+  <section class="max-w-3xl mx-auto px-6 py-20 text-center">
+    <h2 class="text-3xl font-bold mb-3">Contact Me</h2>
+    <p class="text-gray-400 mb-10">
+      Let’s work together or just say hello 👋
+    </p>
+
+    <form id="contactForm"
+      class="bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-2xl shadow-2xl text-left space-y-6">
+
+      <div>
+        <label class="block mb-2 text-sm font-semibold text-gray-300">Name</label>
+        <input id="name" type="text" class="w-full px-4 py-3 rounded-xl bg-gray-800 text-white"  placeholder="💖 Your name">
+      </div>
+
+      <div>
+        <label class="block mb-2 text-sm font-semibold text-gray-300">Email</label>
+        <input id="email" type="email" class="w-full px-4 py-3 rounded-xl bg-gray-800 text-white" placeholder="💖 Your email">
+      </div>
+
+      <div>
+        <label class="block mb-2 text-sm font-semibold text-gray-300">Phone</label>
+        <input id="phone" type="text" class="w-full px-4 py-3 rounded-xl bg-gray-800 text-white" placeholder="💖 Your phone">
+      </div>
+
+      <div>
+        <label class="block mb-2 text-sm font-semibold text-gray-300">Message</label>
+        <textarea id="message" rows="4" class="w-full px-4 py-3 rounded-xl bg-gray-800 text-white" placeholder="💖 Your message"></textarea>
+      </div>
+
+      <button type="submit"
+        class="w-full py-3 rounded-xl bg-sky-400 text-black font-semibold text-lg hover:bg-sky-300 transition">
+        Send Message
+      </button>
+
+      <p id="formMessage" class="text-center font-semibold hidden"></p>
+    </form>
+  </section>
+
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      if (!name || !email || !phone || !message) {
+        showMessage("⚠️ Please fill in all fields.", "text-red-400");
+        return;
+      }
+
+      const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,}$/;
+      if (!emailPattern.test(email)) {
+        showMessage("⚠️ Invalid email address.", "text-red-400");
+        return;
+      }
+
+      showMessage("✅ Message sent successfully!", "text-green-400");
+      this.reset();
+    });
+
+    function showMessage(msg, color) {
+      const feedback = document.getElementById("formMessage");
+      feedback.textContent = msg;
+      feedback.className = `text-center font-semibold ${color}`;
+      feedback.classList.remove("hidden");
+    }
+  </script>
+
+</body>
+</html>
+
+
